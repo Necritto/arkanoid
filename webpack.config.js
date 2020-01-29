@@ -14,17 +14,18 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
             loader: 'css-loader',
           }, {
             loader: 'postcss-loader',
             options: { config: { path: './postcss.config.js' } }
           }, {
             loader: 'sass-loader',
-          }
-        ]
+          }]
+        }
+        )
       },
       {
         test: /\.js$/,
