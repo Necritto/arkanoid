@@ -2,19 +2,31 @@ import * as key from './key';
 import * as engine from './engine';
 import * as graph from './graph';
 
-engine.startGame();
-
-let x = 15;
+let platformWidth = 100;
+const platformHeight = 10;
+let platformX = (graph.width / 2) - (platformWidth / 2);
+const platformY = graph.height - 20;
+let platformColor = 'blue';
 
 graph.clearAll();
-graph.fillAll('#add8e6');
 
-if (key.isKeyDown('D')) {
-  x++;
-}
+engine.startGame(function () {
+  graph.fillAll('#add8e6');
+  graph.drawRect(platformX, platformY, platformWidth, platformHeight, platformColor);
 
-if (key.isKeyDown('A')) {
-  x--;
-}
+  if (key.isKeyDown('LEFT')) {
+    platformX--;
+  }
 
-graph.drawRect(x, 460, 100, 10, 'blue');
+  if (key.isKeyDown('RIGHT')) {
+    platformX++;
+  }
+
+  if (key.isKeyDown('A')) {
+    platformX--;
+  }
+
+  if (key.isKeyDown('D')) {
+    platformX++;
+  }
+});
