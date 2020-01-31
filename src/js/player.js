@@ -4,7 +4,7 @@ import * as graph from './graph';
 export const player = {
   level: 1,
   hp: 3,
-  speed: 1,
+  speed: 2,
   platformWidth: 100,
   platformHeight: 10,
   platformX: 260,
