@@ -13,6 +13,7 @@ engine.startGame(function () {
 
   grid.draw();
 
+  ball.collision();
   ball.move();
   ball.draw();
 

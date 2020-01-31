@@ -29,6 +29,10 @@ export let grid = {
     }
   },
 
+  delete(id) {
+    this.nodes.splice(id, 1);
+  },
+
   draw() {
     for (let enemy of this.nodes) {
       enemy.draw();
