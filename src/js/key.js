@@ -19,6 +19,14 @@ export function clearKey(keyCode) {
   keyDown[keyCode] = false;
 }
 
+export function isAnyKeyDown() {
+  for (let key in keyDown) {
+    if (keyDown[key]) {
+      return true;
+    }
+  }
+}
+
 document.addEventListener('keydown', (e) => {
   setKey(e.keyCode);
 });
