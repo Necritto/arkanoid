@@ -3,7 +3,8 @@ import { grid } from './grid';
 import { player } from './player';
 
 export let ball = {
-  speed: 1,
+  speedX: 1,
+  speedY: 1,
   dx: 1,
   dy: -1,
 
@@ -24,8 +25,8 @@ export let ball = {
   },
 
   move() {
-    this.x += this.speed * this.dx;
-    this.y += this.speed * this.dy;
+    this.x += this.speedX * this.dx;
+    this.y += this.speedY * this.dy;
   },
 
   collision() {
@@ -35,13 +36,21 @@ export let ball = {
         item.enemyX, item.enemyY, item.enemyWidth, item.enemyHeight)) {
         this.dy *= -1;
         grid.delete(i);
-        this.speed += 0.1;
+        this.speedY += 0.1;
       }
     }
 
     if (graph.isCollision(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2,
       player.platformX, player.platformY, player.platformWidth, player.platformHeight)) {
       this.dy *= -1;
+
+      if (this.dx === player.dx) {
+        this.speedX *= 1.5;
+      } else {
+        this.speedX /= player.dx != 0 ? 1.5 : 1;
+      }
+
+      this.dx = player.dx || this.dx;
     }
 
     if (this.x + this.radius >= graph.width) {
