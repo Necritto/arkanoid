@@ -31,5 +31,11 @@ export const player = {
     if (key.isKeyDown('D')) {
       this.platformX += this.speed;
     }
+  },
+
+  init(platformX, platformWidth, platformColor) {
+    this.platformX = platformX;
+    this.platformWidth = platformWidth;
+    this.platformColor = platformColor;
   }
 };
