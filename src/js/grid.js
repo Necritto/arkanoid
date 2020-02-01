@@ -51,6 +51,10 @@ export let grid = {
         }
       }
     }
+  },
+
+  clear() {
+    this.nodes = [];
   }
 };
 

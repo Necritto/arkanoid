@@ -13,6 +13,12 @@ export let startGame = function (game) {
   gameLoop();
 };
 
+export let setGame = function (game) {
+  if (typeof game === 'function') {
+    _engine = game;
+  }
+};
+
 let gameLoop = function () {
   _engine();
   _render(gameLoop);

@@ -1,10 +1,11 @@
 import * as graph from './graph';
 import { grid } from './grid';
 import { player } from './player';
+import { map } from './map';
 
 export let ball = {
   speedX: 1,
-  speedY: 1,
+  speedY: 3,
   dx: 1,
   dy: -1,
 
@@ -29,6 +30,13 @@ export let ball = {
     this.y += this.speedY * this.dy;
   },
 
+  clear() {
+    this.speedX = 1;
+    this.speedY = 1;
+    this.dx = 1;
+    this.dy = -1;
+  },
+
   collision() {
     for (let i in grid.nodes) {
       let item = grid.nodes[i];
@@ -37,6 +45,7 @@ export let ball = {
         this.dy *= -1;
         grid.delete(i);
         this.speedY += 0.1;
+        player.updateScore(1);
       }
     }
 
@@ -63,6 +72,21 @@ export let ball = {
 
     if (this.y - this.radius <= 0) {
       this.dy = 1;
+    }
+
+    if (this.y >= graph.height) {
+      if (player.hp < 1) {
+        alert('You lose!');
+
+        player.hp = 4;
+        player.score = 0;
+        grid.clear();
+        ball.clear();
+        grid.create(map);
+      }
+
+      player.updateHp(1);
+      ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, 'yellow');
     }
   }
 };

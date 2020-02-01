@@ -6,6 +6,7 @@ export const player = {
   hp: 3,
   speed: 2,
   dx: 0,
+  score: 0,
   platformWidth: 100,
   platformHeight: 10,
   platformX: 260,
@@ -38,5 +39,15 @@ export const player = {
     this.platformX = platformX;
     this.platformWidth = platformWidth;
     this.platformColor = platformColor;
+  },
+
+  updateScore(score) {
+    this.score += score;
+    document.querySelector('.score-count').textContent = this.score;
+  },
+
+  updateHp(hp) {
+    this.hp -= hp;
+    document.querySelector('.hp-count').textContent = this.hp;
   }
 };
