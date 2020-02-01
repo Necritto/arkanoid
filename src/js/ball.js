@@ -35,6 +35,7 @@ export let ball = {
         item.enemyX, item.enemyY, item.enemyWidth, item.enemyHeight)) {
         this.dy *= -1;
         grid.delete(i);
+        this.speed += 0.1;
       }
     }
 
@@ -49,6 +50,10 @@ export let ball = {
 
     if (this.x - this.radius <= 0) {
       this.dx *= -1;
+    }
+
+    if (this.y - this.radius <= 0) {
+      this.dy = 1;
     }
   }
 };

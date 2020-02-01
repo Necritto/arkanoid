@@ -3,9 +3,11 @@ import * as graph from './graph';
 import { player } from './player';
 import { grid } from './grid';
 import { ball } from './ball';
+import { map } from './map';
 
 graph.clearAll();
-grid.gen(10, 80, 20, 'red');
+grid.create(map);
+player.init(graph.width / 2, 200, 'blue');
 ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, 'yellow');
 
 engine.startGame(function () {

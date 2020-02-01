@@ -37,6 +37,20 @@ export let grid = {
     for (let enemy of this.nodes) {
       enemy.draw();
     }
+  },
+
+  create(map) {
+    let dOffsetX = (graph.width - (map.tiles[0].length * (map.width + map.offset))) / 2;
+    for (let index1 in map.tiles) {
+      for (let index2 in map.tiles[index1]) {
+        let item = map.tiles[index1][index2];
+        let dx = dOffsetX + index2 * (map.width + map.offset);
+        let dy = map.offset + index1 * (map.height + map.offset);
+        if (item === 1) {
+          this.add(dx, dy, map.width, map.height, map.color);
+        }
+      }
+    }
   }
 };
 
