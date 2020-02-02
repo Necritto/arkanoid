@@ -33,6 +33,14 @@ export const player = {
     } else {
       this.dx = 0;
     }
+
+    if (player.platformX + player.platformWidth >= graph.width) {
+      this.platformX = graph.width - this.platformWidth;
+    }
+
+    if (player.platformX <= 0) {
+      this.platformX = 0;
+    }
   },
 
   init(platformX, platformWidth, platformColor) {
