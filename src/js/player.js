@@ -1,9 +1,12 @@
 import * as key from './key';
 import * as graph from './graph';
 
+export const hpCount = document.querySelector('.hp-count');
+export const scoreCount = document.querySelector('.score-count');
+
 export const player = {
   level: 1,
-  hp: 3,
+  hp: hpCount.dataset.value,
   speed: 2,
   dx: 0,
   score: 0,
@@ -51,11 +54,11 @@ export const player = {
 
   updateScore(score) {
     this.score += score;
-    document.querySelector('.score-count').textContent = this.score;
+    scoreCount.textContent = this.score;
   },
 
   updateHp(hp) {
     this.hp -= hp;
-    document.querySelector('.hp-count').textContent = this.hp;
+    hpCount.textContent = this.hp;
   }
 };

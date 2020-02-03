@@ -1,11 +1,10 @@
 import * as graph from './graph';
 import { grid } from './grid';
 import { player } from './player';
-import { map } from './map';
 
 export let ball = {
   speedX: 1,
-  speedY: 3,
+  speedY: 1,
   dx: 1,
   dy: -1,
 
@@ -75,18 +74,9 @@ export let ball = {
     }
 
     if (this.y >= graph.height) {
-      if (player.hp < 1) {
-        alert('You lose!');
-
-        player.hp = 4;
-        player.score = 0;
-        grid.clear();
-        ball.clear();
-        grid.create(map);
-      }
-
       player.updateHp(1);
       ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, 'yellow');
+      ball.clear();
     }
   }
 };
