@@ -55,7 +55,7 @@ export let ball = {
       if (this.dx === player.dx) {
         this.speedX *= 1.5;
       } else {
-        this.speedX /= player.dx != 0 ? 1.5 : 1;
+        this.speedX /= player.dx !== 0 ? 1.5 : 1;
       }
 
       this.dx = player.dx || this.dx;

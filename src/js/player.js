@@ -3,6 +3,7 @@ import * as graph from './graph';
 
 export const hpCount = document.querySelector('.hp-count');
 export const scoreCount = document.querySelector('.score-count');
+export const levelScore = document.querySelector('.level-count');
 
 export const player = {
   level: 1,
@@ -60,5 +61,10 @@ export const player = {
   updateHp(hp) {
     this.hp -= hp;
     hpCount.textContent = this.hp;
+  },
+
+  updateLevel(level) {
+    this.level += level;
+    levelScore.textContent = this.level;
   }
 };
