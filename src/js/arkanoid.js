@@ -1,15 +1,17 @@
 import * as engine from './engine';
 import * as graph from './graph';
-import { player, hpCount } from './player';
+import { player, hpCount, scoreCount, levelScore } from './player';
 import { grid } from './grid';
 import { ball } from './ball';
 import { map } from './map';
 import { isAnyKeyDown } from './key';
 
+map.createMap(0);
 graph.clearAll();
 grid.create(map);
 init();
 hpCount.textContent = hpCount.dataset.value;
+levelScore.textContent = levelScore.dataset.value;
 
 function game() {
   graph.fillAll('#add8e6');
@@ -23,6 +25,13 @@ function game() {
   if (grid.nodes.length === 0) {
     alert('You win!');
 
+    player.updateLevel(1);
+    map.clearMap();
+    map.createMap(player.level - 1);
+    if (player.level === 4) {
+      alert('The end!');
+      location.reload();
+    }
     init();
     engine.startGame(preGame);
   }
@@ -31,7 +40,10 @@ function game() {
     alert('You lose!');
 
     player.hp = hpCount.dataset.value;
+    hpCount.textContent = player.hp;
     player.score = 0;
+    scoreCount.textContent = 0;
+    player.level = 1;
     init();
     engine.startGame(preGame);
   }
