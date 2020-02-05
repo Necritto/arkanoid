@@ -6,12 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="./static/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../dist/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>Arkanoid on JS</title>
 </head>
 
 <body>
-  <script src="../dist/bundle.js"></script>
+  <div class="wrapper">
+    <canvas class="canvas" width="640" height="480"></canvas>
+    <div class="score">
+      <p>Player score: <b class="score-count">0</b></p>
+      <p class="hp">Hp: <b class="hp-count" data-value="3"></b></p>
+      <p class="level">Level: <b class="level-count" data-value="1"></b></p>
+    </div>
+  </div>
+  <script type="module" src="./index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.score {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #0a0909;
+  font-size: 20px;
+  font-weight: 600;
+
+  b {
+    color: #f5deb3;
+  }
+}
+
+.canvas {
+  width: 50vw;
+  height: 75vh;
+  border: 10px solid #ffa500;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right, #490786, #17a9ce, #17ce36);
+}
