@@ -1,5 +1,5 @@
 export let map = {
-  color: 'red',
+  color: '#00c4ff',
   width: 50,
   height: 20,
   offset: 5,
