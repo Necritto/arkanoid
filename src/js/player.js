@@ -1,5 +1,5 @@
-import * as key from './key';
-import * as graph from './graph';
+import * as key from './key.js';
+import * as graph from './graph.js';
 
 export const hpCount = document.querySelector('.hp-count');
 export const scoreCount = document.querySelector('.score-count');
@@ -15,7 +15,7 @@ export const player = {
   platformHeight: 10,
   platformX: 260,
   platformY: 460,
-  platformColor: 'blue',
+  platformColor: '#ad2bd4',
 
   draw() {
     graph.drawRect(this.platformX, this.platformY, this.platformWidth, this.platformHeight, this.platformColor);

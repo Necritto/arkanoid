@@ -1,6 +1,6 @@
-import * as graph from './graph';
-import { grid } from './grid';
-import { player } from './player';
+import * as graph from './graph.js';
+import { grid } from './grid.js';
+import { player } from './player.js';
 
 export let ball = {
   speedX: 1,
@@ -8,7 +8,7 @@ export let ball = {
   dx: 1,
   dy: -1,
 
-  color: 'yellow',
+  color: '#52d42b',
   x: 0,
   y: 0,
   radius: 6,
@@ -75,7 +75,7 @@ export let ball = {
 
     if (this.y >= graph.height) {
       player.updateHp(1);
-      ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, 'yellow');
+      ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, '#52d42b');
       ball.clear();
     }
   }

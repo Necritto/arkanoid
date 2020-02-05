@@ -1,4 +1,4 @@
-import * as graph from './graph';
+import * as graph from './graph.js';
 
 export let grid = {
   nodes: [],

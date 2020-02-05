@@ -1,10 +1,10 @@
-import * as engine from './engine';
-import * as graph from './graph';
-import { player, hpCount, scoreCount, levelScore } from './player';
-import { grid } from './grid';
-import { ball } from './ball';
-import { map } from './map';
-import { isAnyKeyDown } from './key';
+import * as engine from './engine.js';
+import * as graph from './graph.js';
+import { player, hpCount, scoreCount, levelScore } from './player.js';
+import { grid } from './grid.js';
+import { ball } from './ball.js';
+import { map } from './map.js';
+import { isAnyKeyDown } from './key.js';
 
 map.createMap(0);
 graph.clearAll();
@@ -14,7 +14,7 @@ hpCount.textContent = hpCount.dataset.value;
 levelScore.textContent = levelScore.dataset.value;
 
 function game() {
-  graph.fillAll('#add8e6');
+  graph.fillAll('#000000');
   grid.draw();
   ball.collision();
   ball.move();
@@ -33,7 +33,7 @@ function game() {
       location.reload();
     }
     init();
-    engine.startGame(preGame);
+    engine.setGame(preGame);
   }
 
   if (player.hp < 1) {
@@ -44,13 +44,16 @@ function game() {
     player.score = 0;
     scoreCount.textContent = 0;
     player.level = 1;
+    levelScore.textContent = player.level;
+    map.clearMap();
+    map.createMap(player.level - 1);
     init();
-    engine.startGame(preGame);
+    engine.setGame(preGame);
   }
 }
 
 function preGame() {
-  graph.fillAll('#add8e6');
+  graph.fillAll('#000000');
   grid.clear();
   ball.clear();
   grid.create(map);
@@ -65,8 +68,8 @@ function preGame() {
 
 function init() {
   return (
-    player.init(graph.width / 2 - player.platformWidth / player.platformWidth * 100, 200, 'blue'),
-    ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, 'yellow')
+    player.init(graph.width / 2 - player.platformWidth / player.platformWidth * 100, 200, '#ad2bd4'),
+    ball.init(player.platformX + Math.ceil(player.platformWidth / 2), player.platformY - ball.radius, 6, '#52d42b')
   );
 }
 
